@@ -88,7 +88,6 @@ function CardCondidature() {
               <Icon fontSize="large" sx={{ color: "blue", fontSize: 30 }}>
                 Home
               </Icon>
-              <Icon baseClassName="fas" className="fa-plus-circle" sx={{ color: "blue" }} />{" "}
             </MDButton>
           </Grid>
           <Grid>
