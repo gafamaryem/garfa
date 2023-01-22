@@ -14,7 +14,7 @@ Coded by www.creative-tim.com
 */
 
 // Main components
-import Condidatures from "layouts/main/components/Condidatures";
+import Candidatures from "layouts/main/components/Candidatures";
 import Annonces from "layouts/main/components/Annonces";
 import Grid from "@mui/material/Grid";
 
@@ -28,7 +28,7 @@ function Main() {
   return (
     <DashboardLayout>
       <DashboardNavbar />
-      <Condidatures />
+      <Candidatures />
       <Grid container spacing={3}>
         <Annonces />
         <Grid sx={{ mt: "50px", ml: "20px" }}>
