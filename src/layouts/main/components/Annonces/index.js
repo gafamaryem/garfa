@@ -12,6 +12,8 @@ Coded by www.creative-tim.com
 
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 */
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useStore } from "react-redux";
 
 // @mui material components
 
@@ -25,6 +27,8 @@ import MDButton from "components/MDButton";
 // Material  2 React example components
 
 function CardAnnonce() {
+  const store = useStore();
+
   return (
     <MDBox
       color="white"
@@ -35,62 +39,41 @@ function CardAnnonce() {
       sx={{ mt: "50px", py: "50px" }}
     >
       <MDTypography color="dark" fontWeight="light" sx={{ fontSize: 18, mb: "30px" }}>
-        Condidatures
+        Candidatures
       </MDTypography>
-      <Grid
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <Grid sx={{ mr: "20px" }}>
-          <MDButton variant="gradient" color="light" iconOnly style={{ borderRadius: "50px" }}>
-            <Icon fontSize="large" sx={{ color: "#62A5FF", fontSize: 30 }}>
-              Home
-            </Icon>
-          </MDButton>
+      {store.getState().candidate.map((item) => (
+        <Grid
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            flexDirection: "row",
+          }}
+        >
+          <Grid sx={{ mr: "20px" }}>
+            <MDButton
+              variant="gradient"
+              color="info"
+              sx={{ background: item.color, borderRadius: "50px" }}
+              iconOnly
+            >
+              <Icon>check_box</Icon>
+            </MDButton>
+          </Grid>
+          <Grid sx={{ mr: "50px" }}>
+            <MDTypography color="dark" fontWeight="bold" variant="h4">
+              {item.value}
+            </MDTypography>
+            <MDTypography color="dark" fontWeight="light" sx={{ fontSize: 14, mb: "30px" }}>
+              {item.label}
+            </MDTypography>
+          </Grid>
+          <Grid>
+            <MDButton variant="gradient" color="info" iconOnly>
+              <Icon>arrow_forward_ios</Icon>
+            </MDButton>
+          </Grid>
         </Grid>
-        <Grid sx={{ mr: "50px" }}>
-          <MDTypography color="dark" fontWeight="bold" variant="h4">
-            23
-          </MDTypography>
-          <MDTypography color="dark" fontWeight="light" sx={{ fontSize: 14, mb: "30px" }}>
-            En ligne
-          </MDTypography>
-        </Grid>
-        <Grid>
-          <MDButton variant="gradient" color="info" iconOnly>
-            <Icon>arrow_forward_ios</Icon>
-          </MDButton>
-        </Grid>
-      </Grid>
-      <Grid
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-        }}
-      >
-        <Grid sx={{ mr: "20px" }}>
-          <MDButton variant="gradient" color="light" iconOnly style={{ borderRadius: "50px" }}>
-            <Icon fontSize="large" sx={{ color: "#62A5FF", fontSize: 30 }}>
-              Home
-            </Icon>
-          </MDButton>
-        </Grid>
-        <Grid sx={{ mr: "50px" }}>
-          <MDTypography color="dark" fontWeight="bold" variant="h4">
-            23
-          </MDTypography>
-          <MDTypography color="dark" fontWeight="light" sx={{ fontSize: 14, mb: "30px" }}>
-            En ligne
-          </MDTypography>
-        </Grid>
-        <Grid>
-          <MDButton variant="gradient" color="info" iconOnly>
-            <Icon>arrow_forward_ios</Icon>
-          </MDButton>
-        </Grid>
-      </Grid>
+      ))}
     </MDBox>
   );
 }
